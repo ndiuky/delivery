@@ -2,6 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto, RegisterDto, UpdateTokenDto } from './dto/auth.dto';
 import type { User } from 'generated/prisma';
+import { Auth } from './decorator/auth.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -30,6 +31,7 @@ export class AuthController {
   }
 
   @Post('token')
+  @Auth()
   public updateToken(@Body() dto: UpdateTokenDto): Promise<{
     accessToken: string;
     refreshToken: string;
