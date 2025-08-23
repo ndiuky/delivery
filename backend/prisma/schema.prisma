@@ -25,7 +25,8 @@ model User {
   avatar   String @default("/upload/default/avatar.png")
   nickname String @unique
 
-  email String @unique
+  email    String @unique
+  password String
 
   @@map("user")
 }
